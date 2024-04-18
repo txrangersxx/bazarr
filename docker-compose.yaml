@@ -1,0 +1,17 @@
+#version: "2.1"
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1003
+      - TZ=America/Chicago
+    volumes:
+      - /home/ubuntu/docker/bazarr/config:/config
+      - /mnt/NAS/Films:/movies #optional
+      - /mnt/NAS/TV:/tv #optional
+    #ports:
+     # - 6767:6767
+    restart: unless-stopped
